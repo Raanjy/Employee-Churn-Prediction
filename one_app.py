@@ -112,6 +112,6 @@ if uploaded_file is not None:
             st.write("Saving the processed data...")
             processed_data.to_csv('processed_data.csv', index=False)
             st.success("Data saved successfully!")
-        except Exception as e:
-                st.error(f"Failed to open file: {e}")
+    except Exception as e:
+        st.error(f"Failed to open file: {e}")
     
