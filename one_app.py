@@ -74,9 +74,9 @@ if st.button("Predict"):
 else:
     # Content for App 2
     # Function to process data
-def process_data(f_model):
+    def process_data(f_model):
         # Load the model and perform predictions
-with open('Final_model.pkl', 'rb') as f:
+        with open('Final_model.pkl', 'rb') as f:
     f_model = pickle.load(f)
         
 result = hr_fit.predict(xtest)
