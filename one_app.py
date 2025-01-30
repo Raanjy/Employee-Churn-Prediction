@@ -8,11 +8,11 @@ app_selection = st.sidebar.selectbox("Select App", ["Single Prediction", "Predic
 
 if app_selection == "Single Prediction":
     # Load the pre-trained model
-    with open('data.pkl','rb') as f:
+    with open('Final_model.pkl','rb') as f:
             data = pickle.load(f)
             
-    with open('pipeline.pkl','rb') as f:
-        pipeline = pickle.load(f)
+    with open("Final_model.pkl", 'rb') as f:
+    f_model = pickle.load(f)
     
     # Function to show prediction result
     def show_prediction():
@@ -38,7 +38,7 @@ if app_selection == "Single Prediction":
             'salary': [p9]
         })
     
-        result = pipeline.predict(sample)
+        result = hr_fit.predict(xtest)
         
         if result == 1:
             st.write("An employee may leave the organization.")
@@ -73,20 +73,20 @@ if app_selection == "Single Prediction":
 else:
     # Content for App 2
     # Function to process data
-    def process_data(data):
+    def process_data(f_model):
         # Load the model and perform predictions
-        with open('pipeline.pkl', 'rb') as f:
-            pipeline = pickle.load(f)
+        with open('Final_model.pkl', 'rb') as f:
+            f_model = pickle.load(f)
         
-        result = pipeline.predict(data)
+        result = hr_fit.predict(xtest)
         
         # Assign predictions based on result
         y_pred = ["An employee may leave the organization." if pred == 1 
                   else "An employee may stay with the organization." for pred in result]
         
         # Add predicted target to the data
-        data['Predicted_target'] = y_pred
-        return data
+        f_model['Predicted_target'] = y_pred
+        return f_model
     
     # Streamlit app
     st.title("Predicting Employee Churn Using Machine Learning")
