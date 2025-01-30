@@ -87,7 +87,7 @@ y_pred = ["An employee may leave the organization." if pred == 1
         
         # Add predicted target to the data
 f_model['Predicted_target'] = y_pred
-return f_model
+    return f_model
     
     # Streamlit app
 st.title("Predicting Employee Churn Using Machine Learning")
