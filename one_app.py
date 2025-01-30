@@ -8,15 +8,14 @@ app_selection = st.sidebar.selectbox("Select App", ["Single Prediction", "Predic
 
 if app_selection == "Single Prediction":
     # Load the pre-trained model
-            with open('Final_model.pkl', 'rb') as f:
-                f_model = pickle.load(f)
-        
-            with open('Final_model.pkl', 'rb') as f:
-                f_model = pickle.load(f)
-        
-
+    with open('data.pkl','rb') as f:
+            data = pickle.load(f)
+            
+    with open('pipeline.pkl','rb') as f:
+        pipeline = pickle.load(f)
+    
     # Function to show prediction result
-def show_prediction():
+    def show_prediction():
         p1 = float(e1)
         p2 = float(e2)
         p3 = float(e3)
@@ -39,7 +38,7 @@ def show_prediction():
             'salary': [p9]
         })
     
-        result = hr_fit.predict(sample)
+        result = pipeline.predict(sample)
         
         if result == 1:
             st.write("An employee may leave the organization.")
@@ -47,56 +46,56 @@ def show_prediction():
             st.write("An employee may stay with the organization.")
     
     # Streamlit app
-st.title("Predicting Employee Churn Using Machine Learning")
+    st.title("Predicting Employee Churn Using Machine Learning")
     
     # Employee data input fields
     
-
-e1 = st.slider("Employee satisfaction level", 0.0, 1.0, 0.5)
-e2 = st.slider("Last evaluation score", 0.0, 1.0, 0.5)
-e3 = st.slider("Number of projects assigned to", 1, 10, 5)
-e4 = st.slider("Average monthly hours worked", 50, 300, 150)
-e5 = st.slider("Time spent at the company", 1, 10, 3)
-e6 = st.radio("Whether they have had a work accident", [0, 1])
-e7 = st.radio("Whether they have had a promotion in the last 5 years", [0, 1])
     
-options = ('sales', 'technical', 'support', 'IT', 'product_mng', 'marketing',
+    e1 = st.slider("Employee satisfaction level", 0.0, 1.0, 0.5)
+    e2 = st.slider("Last evaluation score", 0.0, 1.0, 0.5)
+    e3 = st.slider("Number of projects assigned to", 1, 10, 5)
+    e4 = st.slider("Average monthly hours worked", 50, 300, 150)
+    e5 = st.slider("Time spent at the company", 1, 10, 3)
+    e6 = st.radio("Whether they have had a work accident", [0, 1])
+    e7 = st.radio("Whether they have had a promotion in the last 5 years", [0, 1])
+    
+    options = ('sales', 'technical', 'support', 'IT', 'product_mng', 'marketing',
            'RandD', 'accounting', 'hr', 'management')
-e8 = st.selectbox("Department name", options)
+    e8 = st.selectbox("Department name", options)
     
-options1 = ('low','meduim','high')
-e9 = st.selectbox("Salary category", options1)
+    options1 = ('low','meduim','high')
+    e9 = st.selectbox("Salary category", options1)
     
     # Predict button
-if st.button("Predict"):
-    show_prediction()
+    if st.button("Predict"):
+        show_prediction()
 
 else:
     # Content for App 2
     # Function to process data
-    def process_data(f_model):
+    def process_data(data):
         # Load the model and perform predictions
-        with open('Final_model.pkl', 'rb') as f:
-            f_model = pickle.load(f)
+        with open('pipeline.pkl', 'rb') as f:
+            pipeline = pickle.load(f)
         
-result = hr_fit.predict(xtest)
+        result = pipeline.predict(data)
         
         # Assign predictions based on result
-y_pred = ["An employee may leave the organization." if pred == 1 
-    else "An employee may stay with the organization." for pred in result]
+        y_pred = ["An employee may leave the organization." if pred == 1 
+                  else "An employee may stay with the organization." for pred in result]
         
         # Add predicted target to the data
-            f_model['Predicted_target'] = y_pred
-        return f_model
+        data['Predicted_target'] = y_pred
+        return data
     
     # Streamlit app
-st.title("Predicting Employee Churn Using Machine Learning")
+    st.title("Predicting Employee Churn Using Machine Learning")
     
     # Button to upload CSV file
-uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
+    uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
     
-if uploaded_file is not None:
-    try:
+    if uploaded_file is not None:
+        try:
             # Load data from CSV
             data = pd.read_csv(uploaded_file)
             data.columns = data.columns.str.replace('\n', '')
@@ -112,6 +111,6 @@ if uploaded_file is not None:
             st.write("Saving the processed data...")
             processed_data.to_csv('processed_data.csv', index=False)
             st.success("Data saved successfully!")
-    except Exception as e:
-        st.error(f"Failed to open file: {e}")
+        except Exception as e:
+            st.error(f"Failed to open file: {e}")
     
