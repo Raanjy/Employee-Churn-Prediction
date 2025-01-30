@@ -98,10 +98,10 @@ uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
 if uploaded_file is not None:
     try:
             # Load data from CSV
-data = pd.read_csv(uploaded_file)
-data.columns = data.columns.str.replace('\n', '')
-data.rename(columns={'Departments ': 'departments'}, inplace=True)
-data = data.drop_duplicates()
+            data = pd.read_csv(uploaded_file)
+            data.columns = data.columns.str.replace('\n', '')
+            data.rename(columns={'Departments ': 'departments'}, inplace=True)
+            data = data.drop_duplicates()
             
             # Process the data
 processed_data = process_data(data)
