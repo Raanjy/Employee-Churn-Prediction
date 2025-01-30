@@ -47,7 +47,7 @@ def show_prediction():
             st.write("An employee may stay with the organization.")
     
     # Streamlit app
-    st.title("Predicting Employee Churn Using Machine Learning")
+st.title("Predicting Employee Churn Using Machine Learning")
     
     # Employee data input fields
     
