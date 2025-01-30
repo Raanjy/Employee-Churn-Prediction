@@ -37,7 +37,7 @@ if app_selection == "Single Prediction":
             'salary': [p9]
         })
     
-        result = hr_fit.predict(xtest)
+        result = hr_fit.predict(sample)
         
         if result == 1:
             st.write("An employee may leave the organization.")
