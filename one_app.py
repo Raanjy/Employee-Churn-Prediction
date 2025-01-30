@@ -8,9 +8,11 @@ app_selection = st.sidebar.selectbox("Select App", ["Single Prediction", "Predic
 
 if app_selection == "Single Prediction":
     # Load the pre-trained model
-            
-    with open('Final_model.pkl', 'rb') as f:
-        f_model = pickle.load(f)
+            with open('Final_model.pkl', 'rb') as f:
+                f_model = pickle.load(f)
+        
+            with open('Final_model.pkl', 'rb') as f:
+                f_model = pickle.load(f)
         
 
     # Function to show prediction result
