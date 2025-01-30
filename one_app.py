@@ -104,7 +104,7 @@ if uploaded_file is not None:
             data = data.drop_duplicates()
             
             # Process the data
-processed_data = process_data(data)
+            processed_data = process_data(data)
             
             # Save the processed data to a CSV file
 st.write("Processed Data:")
