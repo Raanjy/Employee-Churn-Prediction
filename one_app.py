@@ -11,9 +11,10 @@ if app_selection == "Single Prediction":
     with open('Final_model.pkl','rb') as f:
             data = pickle.load(f)
             
-    with open("Final_model.pkl", 'rb') as f:
-    f_model = pickle.load(f)
-    
+    with open('Final_model.pkl', 'rb') as f:
+        f_model = pickle.load(f)
+        
+
     # Function to show prediction result
     def show_prediction():
         p1 = float(e1)
