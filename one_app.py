@@ -16,7 +16,7 @@ if app_selection == "Single Prediction":
         
 
     # Function to show prediction result
-    def show_prediction():
+def show_prediction():
         p1 = float(e1)
         p2 = float(e2)
         p3 = float(e3)
