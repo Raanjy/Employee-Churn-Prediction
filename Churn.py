@@ -75,7 +75,7 @@ else:
     # Function to process data
     def process_data(data):
         # Load the model and perform predictions
-        with open('pipeline.pkl', 'rb') as f:
+        with open('Final_model.pkl', 'rb') as f:
             pipeline = pickle.load(f)
         
         result = pipeline.predict(data)
