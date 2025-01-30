@@ -90,7 +90,7 @@ f_model['Predicted_target'] = y_pred
 return f_model
     
     # Streamlit app
-         st.title("Predicting Employee Churn Using Machine Learning")
+st.title("Predicting Employee Churn Using Machine Learning")
     
     # Button to upload CSV file
 uploaded_file = st.file_uploader("Choose a CSV file", type=["csv"])
