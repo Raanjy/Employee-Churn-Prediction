@@ -65,7 +65,7 @@ options = ('sales', 'technical', 'support', 'IT', 'product_mng', 'marketing',
 e8 = st.selectbox("Department name", options)
     
 options1 = ('low','meduim','high')
- e9 = st.selectbox("Salary category", options1)
+e9 = st.selectbox("Salary category", options1)
     
     # Predict button
 if st.button("Predict"):
