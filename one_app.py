@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 import pickle
-pip install sklearn
+pip install scikit-learn
 
 st.sidebar.title("Select One")
 app_selection = st.sidebar.selectbox("Select App", ["Single Prediction", "Prediction Using Test File"])
