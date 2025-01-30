@@ -53,9 +53,9 @@ st.title("Predicting Employee Churn Using Machine Learning")
     
 
 e1 = st.slider("Employee satisfaction level", 0.0, 1.0, 0.5)
- e2 = st.slider("Last evaluation score", 0.0, 1.0, 0.5)
+e2 = st.slider("Last evaluation score", 0.0, 1.0, 0.5)
 e3 = st.slider("Number of projects assigned to", 1, 10, 5)
- e4 = st.slider("Average monthly hours worked", 50, 300, 150)
+e4 = st.slider("Average monthly hours worked", 50, 300, 150)
 e5 = st.slider("Time spent at the company", 1, 10, 3)
 e6 = st.radio("Whether they have had a work accident", [0, 1])
 e7 = st.radio("Whether they have had a promotion in the last 5 years", [0, 1])
