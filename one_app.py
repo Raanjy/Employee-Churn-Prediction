@@ -11,7 +11,7 @@ if app_selection == "Single Prediction":
     
             
     with open('Final_model.pkl','rb') as f:
-        f_model= pickle.load(f)
+            f_model= pickle.load(f)
     
     # Function to show prediction result
     def show_prediction():
