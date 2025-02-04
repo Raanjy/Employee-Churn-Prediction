@@ -1,7 +1,7 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: win-64
-absl-py=2.1.0=pypi_0
+absl-py==2.1.0==pypi_0
 alabaster=0.7.12=pyhd3eb1b0_0
 altair=5.5.0=pypi_0
 anaconda-client=1.11.1=py310haa95532_0
